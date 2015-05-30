@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workspace</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <%= stylesheet_link_tag    'login', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'login', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  
+    <%= yield %>
+  
+  </body>
+  
+	<script>
+		$(document).ready(function() {
+			App.init();
+			LoginV2.init();
+		});
+	</script>
+	
+</html>
