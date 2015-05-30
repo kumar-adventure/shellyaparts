@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: 'users/registrations' }
   devise_for :admins, :skip => :registrations, path: "admin", path_names: { sign_in: 'login', sign_out: 'logout' }, controllers: { sessions: "admin/sessions", passwords: "admin/passwords" }
 
   
