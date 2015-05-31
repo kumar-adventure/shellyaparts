@@ -1,0 +1,32 @@
+<!-- begin #pricing -->
+<div id="pricing" class="content" data-scrollview="true">
+  <!-- begin container -->
+  <div class="container">
+    <h1 class="content-title">Our Plans</h1>
+    
+    <!-- begin pricing-table -->
+    <ul class="pricing-table col-4">
+        
+      <% @plans.each do |plan| %>
+        <li data-animation="true" data-animation-type="fadeInUp">
+          <div class="pricing-container">
+            <h3><%= plan.name %></h3>
+            <div class="price">
+              <div class="price-figure">
+                <span class="price-number"><%= number_to_currency(plan.price, :unit => "$") %> /month</span>
+              </div>
+            </div>
+            <ul class="features">
+              
+            </ul>
+            <div class="footer">
+              <%= link_to 'Buy Now', new_subscription_path(plan: plan.name), class: "btn btn-inverse btn-block" %>
+            </div>
+          </div>
+        </li>
+      <% end %>  
+    </ul>
+  </div>
+  <!-- end container -->
+</div>
+<!-- end #pricing -->

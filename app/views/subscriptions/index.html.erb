@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Plan Name</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subscriptions.each do |subscription| %>
+      <tr>
+        <td> <%= subscription.plan.name %> </td>
+        <td> <%= subscription.plan.currency %> </td>
+        <td> $<%= subscription.plan.price %> </td>
+        <td> <%= subscription.updated_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= subscription.is_active ? "Active" : "In-Active" %> </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>

@@ -39,3 +39,14 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'stripe-rails'
+
+group :development do 
+  gem 'quiet_assets'
+  gem 'byebug'
+end
+
+gem 'whenever', :require => false
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'redis'
