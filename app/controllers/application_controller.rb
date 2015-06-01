@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def check_subscription
   	if current_user
-  	  unless current_user.subscriptions.last.is_active
+  	  if current_user.subscriptions.blank? || !current_user.subscriptions.last.is_active
   	  	redirect_to plans_path, alert: "Please choose a plan Firstly  !!!!"
   	  end
   	end
