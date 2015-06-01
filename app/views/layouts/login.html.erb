@@ -8,16 +8,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  
     <%= yield %>
-  
+
+    <script>
+      $(document).ready(function() {
+        App.init();
+        LoginV2.init();
+      });
+    </script>    
   </body>
-  
-	<script>
-		$(document).ready(function() {
-			App.init();
-			LoginV2.init();
-		});
-	</script>
 	
 </html>
