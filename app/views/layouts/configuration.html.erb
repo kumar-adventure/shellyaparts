@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>SellYaParts</title>
+	  <%= stylesheet_link_tag    'application' %>
+	  <%= javascript_include_tag 'application' %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+    <div class="row">
+      <div class="col-md-4">
+      	<%= render partial: 'shared/configuration_header' %>
+      </div>
+      <div class="col-md-8">
+	      <%= yield %>
+	    </div>
+	  </div>
+	</body>
+</html>

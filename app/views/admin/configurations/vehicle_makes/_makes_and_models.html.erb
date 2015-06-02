@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Makes Name</th>
+          <th>Published</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicle_makes.each do |make| %>
+          <tr>
+            <td> <%= make.name %> </td>
+            <td> <%= make.published ? "Yes" : "No" %> </td>
+            <td> <%= link_to "Remove", admin_configurations_vehicle_make_path(make), method: :delete, data: {confirm: "Are you sure to delete this make?"}, class: "btn btn-danger" %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -52,3 +52,4 @@ gem 'sinatra', require: false
 gem 'redis'
 gem 'kaminari'
 gem "paranoia", "~> 2.0"
+gem 'jquery-validation-rails'

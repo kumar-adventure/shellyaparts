@@ -1,0 +1,31 @@
+<%= render partial: 'makes_and_models' %>
+<div class="row">
+  <div class="col-md-6">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+      Add a make to the database.
+    </a>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @vehicle_make, url: admin_configurations_vehicle_makes_path, method: :post do |f| %>
+          <%= f.text_field :name %>
+          <%= f.submit "Create Makes", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+      Add a model to the database.
+    </a>
+
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @vehicle_model, url: admin_configurations_vehicle_makes_path, method: :post do |f| %>
+          <%= f.select :vehicle_make_id, options_for_select(@vehicle_makes.collect{|v| [v.name, v.id]}), {}, {class: "selectpicker"} %>
+          <%= f.text_field :name %>
+          <%= f.submit "Create Models", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602103305) do
+ActiveRecord::Schema.define(version: 20150602202916) do
 
   create_table "addons", force: true do |t|
     t.string   "name"
@@ -93,5 +93,27 @@ ActiveRecord::Schema.define(version: 20150602103305) do
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vehicle_makes", force: true do |t|
+    t.string   "name"
+    t.boolean  "published",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "vehicle_makes", ["deleted_at"], name: "index_vehicle_makes_on_deleted_at"
+
+  create_table "vehicle_models", force: true do |t|
+    t.integer  "vehicle_make_id"
+    t.string   "name"
+    t.boolean  "published",       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "vehicle_models", ["deleted_at"], name: "index_vehicle_models_on_deleted_at"
+  add_index "vehicle_models", ["vehicle_make_id"], name: "index_vehicle_models_on_vehicle_make_id"
 
 end

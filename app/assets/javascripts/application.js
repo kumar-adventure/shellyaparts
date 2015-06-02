@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require subscriptions
+//= require ./login/bootstrap
+//= require jquery.validate
+//= require jquery.validate.additional-methods
