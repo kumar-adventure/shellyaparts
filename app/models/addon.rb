@@ -1,4 +1,4 @@
-class Plan < ActiveRecord::Base
+class Addon < ActiveRecord::Base
   acts_as_paranoid
   validates_presence_of :name, :price, :currency
 
@@ -15,5 +15,4 @@ class Plan < ActiveRecord::Base
   def update_activation
     update_attributes(activated: false)
   end
-  
 end

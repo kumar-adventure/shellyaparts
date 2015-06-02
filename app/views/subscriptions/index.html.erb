@@ -1,22 +1,32 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Plan Name</th>
+      <th>Plan/Addon Name</th>
       <th>Currency</th>
       <th>Amount</th>
       <th>Date</th>
+      <th>Activated</th>
       <th>Status</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @subscriptions.each do |subscription| %>
       <tr>
-        <td> <%= subscription.plan.name %> </td>
-        <td> <%= subscription.plan.currency %> </td>
-        <td> $<%= subscription.plan.price %> </td>
-        <td> <%= subscription.updated_at.strftime("%d %B %Y   %H:%M") %> </td>
-        <td> <%= subscription.is_active ? "Active" : "In-Active" %> </td>
+        <td> <%= subscription.subscriptionable.name %> </td>
+        <td> <%= subscription.subscriptionable.currency %> </td>
+        <td> $<%= subscription.subscriptionable.price %> </td>
+        <td> <%= subscription.created_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= subscription.is_active ? "Yes" : "No" %> </td>
+        <td> <%= subscription.status %> </td>
+        
+        <td>
+          <% unless subscription.status == "cancel" %>
+            <%= link_to "Delete #{subscription.subscriptionable.class.name}", subscription_path(subscription), method: :delete, data: {confirm: "Are you sure to remove this #{subscription.subscriptionable.class.name}"} %> 
+          <% end %>
+        </td>
       </tr>  
     <% end %>
   </tbody>
 </table>
+<%= paginate @subscriptions %>

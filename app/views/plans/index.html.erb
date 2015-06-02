@@ -16,7 +16,8 @@
       <!-- begin pricing-table -->
       <ul class="pricing-table col-4">
         <% @plans.each_with_index do |plan, index| %>
-          <li class="<%#= index == 0 ? 'highlight' : nil %>" data-animation="true" data-animation-type="fadeInUp">
+          <% is_true = current_user.already_subscribe?(plan) %>
+          <li class="<%= is_true ? 'highlight' : nil %>" data-animation="true" data-animation-type="fadeInUp">
             <div class="pricing-container">
               <h3><%= plan.name %></h3>
               <div class="price">
@@ -33,7 +34,11 @@
                 <li>24/7 Email support</li>
               </ul>
               <div class="footer">
-                <%= link_to 'Buy Now', new_subscription_path(plan: plan.name), class: "btn btn-inverse btn-block" %>
+                <% if is_true %>
+                  <%= link_to 'Current Plan', "javascript:void(0);", class: "btn btn-inverse btn-block" %>
+                <% else %>
+                  <%= link_to 'Buy Now', new_subscription_path(plan: plan.name), class: "btn btn-inverse btn-block" %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -43,4 +48,43 @@
     <!-- end container -->
   </div>
   <!-- end #pricing -->
+
+  <div id="pricing" class="content" data-scrollview="true">
+    <!-- begin container -->
+    <div class="container">
+      <h2 class="content-title">Addon</h2>
+      <!-- begin pricing-table -->
+      <ul class="pricing-table col-4">
+        <% @addons.each_with_index do |addon, index| %>
+          <% is_true = current_user.already_subscribe?(addon) %>
+          <li class="<%= is_true ? 'highlight' : nil %>" data-animation="true" data-animation-type="fadeInUp">
+            <div class="pricing-container">
+              <h3><%= addon.name %></h3>
+              <div class="price">
+                <div class="price-figure">
+                  <span class="price-number"><%= number_to_currency(addon.price, :unit => "$") %> /month</span>
+                </div>
+              </div>
+              <ul class="features">
+                <li>1GB Storage</li>
+                <li>2 Clients</li>
+                <li>5 Active Projects</li>
+                <li>5 Colors</li>
+                <li>Free Goodies</li>
+                <li>24/7 Email support</li>
+              </ul>
+              <div class="footer">
+                <% if is_true %>
+                  <%= link_to 'Current Plan', "javascript:void(0);", class: "btn btn-inverse btn-block" %>
+                <% else %>
+                  <%= link_to 'Buy Now', new_subscription_path(addon: addon.name), class: "btn btn-inverse btn-block" %>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- end container -->
+  </div>  
 </div>

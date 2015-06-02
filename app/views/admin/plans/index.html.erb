@@ -1,0 +1,62 @@
+<h2>Activated Plans</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Plan Name</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Created Date</th>
+      <th>Activated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @active_plans.each do |plan| %>
+      <tr>
+        <td> <%= plan.name %> </td>
+        <td> <%= plan.currency %> </td>
+        <td> $<%= plan.price %> </td>
+        <td> <%= plan.created_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= plan.activated ? "Yes" : "No" %> </td>
+        <td>
+          <%= link_to "Delete", admin_plan_path(plan), method: :delete, data: {confirm: "Are you sure to remove this plan"}, class: "btn btn-danger" %>
+          <%= link_to "Edit", edit_admin_plan_path(plan), class: "btn btn-primary" %>
+        </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>InActivated Plans</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Plan Name</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Created Date</th>
+      <th>Activated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @in_active_plans.each do |plan| %>
+      <tr>
+        <td> <%= plan.name %> </td>
+        <td> <%= plan.currency %> </td>
+        <td> $<%= plan.price %> </td>
+        <td> <%= plan.created_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= plan.activated ? "Yes" : "No" %> </td>
+        <td>
+          <%= link_to "Delete", admin_plan_path(plan), method: :delete, data: {confirm: "Are you sure to remove this plan"}, class: "btn btn-danger" %>
+          <%= link_to "Edit", edit_admin_plan_path(plan), class: "btn btn-primary" %>
+        </td>
+
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Create New Plan", new_admin_plan_path, class: "btn btn-primary" %>

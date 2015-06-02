@@ -2,9 +2,14 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    resources :plans
+    resources :addons
+  end
+
   mount Sidekiq::Web, at: '/sidekiq'
 
-  resources :subscriptions
+  resources :subscriptions, only: [:index, :new, :create, :destroy]
   resources :plans, only: :index
 
   devise_for :users, controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: 'users/registrations' }
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-
+  match "*path", :to => "application#routing_error", :via => :all
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

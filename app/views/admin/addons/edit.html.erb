@@ -1,0 +1,16 @@
+<h2> Update Addon </h2>
+
+<%= form_for @addon, url: admin_addon_path(@addon), method: :patch do |f| %>
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>
+  <p class='error'><%= show_errors(@addon, :name) %></p>
+  <%= f.label :price %><br/>
+  <%= f.text_field :price %>
+  <p class='error'><%= show_errors(@addon, :price) %></p>
+  <%= f.label :currency %><br/>
+  <%= f.text_field :currency %>
+  <p class='error'><%= show_errors(@addon, :currency) %></p>
+  <%= f.label :activated %><br/>
+  <%= f.check_box :activated %><br/>
+  <%= f.submit "Creat Addon", class: "btn btn-success" %>  
+<% end %>

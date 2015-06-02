@@ -1,0 +1,16 @@
+<h2> Create New Plan here </h2>
+
+<%= form_for @plan, url: admin_plans_path, method: :post do |f| %>
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>
+  <p class='error'><%= show_errors(@plan, :name) %></p>
+  <%= f.label :price %><br/>
+  <%= f.text_field :price %>
+  <p class='error'><%= show_errors(@plan, :price) %></p>
+  <%= f.label :currency %><br/>
+  <%= f.text_field :currency %>
+  <p class='error'><%= show_errors(@plan, :currency) %></p>
+  <%= f.label :activated %><br/>
+  <%= f.check_box :activated %><br/>
+  <%= f.submit "Creat Plan", class: "btn btn-success" %>  
+<% end %>

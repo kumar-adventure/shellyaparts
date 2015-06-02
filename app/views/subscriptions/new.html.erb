@@ -1,5 +1,5 @@
 <div id="flash-messages"></div>
-<%= form_tag subscriptions_path(plan: params[:plan]), method: :post, id: "new_subscription" do %>
+<%= form_tag subscriptions_path(plan: params[:plan], addon: params[:addon]), method: :post, id: "new_subscription" do %>
   <%= label_tag "Card Number", nil, required: true %>
   <div class="control-group">
     <div class="controls">

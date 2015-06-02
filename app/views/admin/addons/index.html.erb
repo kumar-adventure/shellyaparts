@@ -1,0 +1,61 @@
+<h2>Activated Addons</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Addon Name</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Created Date</th>
+      <th>Activated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @active_addons.each do |addon| %>
+      <tr>
+        <td> <%= addon.name %> </td>
+        <td> <%= addon.currency %> </td>
+        <td> $<%= addon.price %> </td>
+        <td> <%= addon.created_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= addon.activated ? "Yes" : "No" %> </td>
+        <td>
+          <%= link_to "Delete", admin_addon_path(addon), method: :delete, data: {confirm: "Are you sure to remove this Addon"}, class: "btn btn-danger" %> 
+           <%= link_to "Edit", edit_admin_addon_path(addon), class: "btn btn-primary" %>
+        </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>InActivated Addons</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Addon Name</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Created Date</th>
+      <th>Activated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @in_active_addons.each do |addon| %>
+      <tr>
+        <td> <%= addon.name %> </td>
+        <td> <%= addon.currency %> </td>
+        <td> $<%= addon.price %> </td>
+        <td> <%= addon.created_at.strftime("%d %B %Y   %H:%M") %> </td>
+        <td> <%= addon.activated ? "Yes" : "No" %> </td>
+        <td>
+          <%= link_to "Delete", admin_addon_path(addon), method: :delete, data: {confirm: "Are you sure to remove this addon"}, class: "btn btn-danger" %>
+           <%= link_to "Edit", edit_admin_addon_path(addon), class: "btn btn-primary" %>
+        </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "Create New Addon", new_admin_addon_path, class: "btn btn-primary" %>

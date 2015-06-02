@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531174534) do
+ActiveRecord::Schema.define(version: 20150602103305) do
+
+  create_table "addons", force: true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "currency"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "activated",  default: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "addons", ["deleted_at"], name: "index_addons_on_deleted_at"
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -26,8 +38,10 @@ ActiveRecord::Schema.define(version: 20150531174534) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "admins", ["deleted_at"], name: "index_admins_on_deleted_at"
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
@@ -37,17 +51,25 @@ ActiveRecord::Schema.define(version: 20150531174534) do
     t.string   "currency"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "activated",  default: false
+    t.datetime "deleted_at"
   end
+
+  add_index "plans", ["deleted_at"], name: "index_plans_on_deleted_at"
 
   create_table "subscriptions", force: true do |t|
     t.integer  "user_id"
-    t.integer  "plan_id"
+    t.integer  "subscriptionable_id"
+    t.string   "subscriptionable_type"
     t.string   "customer_id"
-    t.boolean  "paid",        default: false
+    t.boolean  "is_active",             default: false
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_active",   default: false
+    t.datetime "deleted_at"
   end
+
+  add_index "subscriptions", ["deleted_at"], name: "index_subscriptions_on_deleted_at"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -65,8 +87,10 @@ ActiveRecord::Schema.define(version: 20150531174534) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
