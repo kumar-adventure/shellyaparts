@@ -21,5 +21,5 @@ Addon.create(name: "Fashbook-Shop", price: 50, currency: "aud", activated: true)
 Addon.create(name: "Website -add-on", price: 100, currency: "aud", activated: true)
 
 Admin.delete_all
-Admin.create(email: 'admin@mailinator.com', passowrd: '12345678', passowrd_confirmation: '12345678')
-User.create(email: 'test@mailinator.com', passowrd: '12345678', passowrd_confirmation: '12345678', first_name: 'test', last_name: 'kumar')
+Admin.create(email: 'admin@mailinator.com', password: '12345678', password_confirmation: '12345678')
+User.create(email: 'test@mailinator.com', password: '12345678', password_confirmation: '12345678', first_name: 'test', last_name: 'kumar')
