@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :configurations, only: :index
     namespace :configurations do
       resources :vehicle_makes
+      resources :vehicle_models
     end
   end
 

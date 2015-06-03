@@ -5,8 +5,9 @@
     </a>
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
-        <%= form_for @vehicle_make, url: admin_configurations_vehicle_make_path, method: :put do |f| %>
+        <%= form_for @vehicle_model, url: admin_configurations_vehicle_model_path, method: :put do |f| %>
           <%= f.text_field :name %><br/>
+          <%= f.select :vehicle_make_id, options_for_select(@vehicle_makes.collect{|v| [v.name, v.id]}), {}, {class: "selectpicker"} %><br/>
           <%= f.label :published %>
           <%= f.check_box :published %><br>
           <%= f.submit "Create Makes", class: "btn btn-success" %>

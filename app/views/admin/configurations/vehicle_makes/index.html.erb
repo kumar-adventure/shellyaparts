@@ -20,7 +20,7 @@
 
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
-        <%= form_for @vehicle_model, url: admin_configurations_vehicle_makes_path, method: :post do |f| %>
+        <%= form_for @vehicle_model, url: admin_configurations_vehicle_models_path, method: :post do |f| %>
           <%= f.select :vehicle_make_id, options_for_select(@vehicle_makes.collect{|v| [v.name, v.id]}), {}, {class: "selectpicker"} %>
           <%= f.text_field :name %>
           <%= f.submit "Create Models", class: "btn btn-success" %>

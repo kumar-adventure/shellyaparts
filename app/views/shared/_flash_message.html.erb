@@ -1,0 +1,12 @@
+<script type="text/javascript">
+  $(".alert_msg_nav_bar").removeClass("hide"); 
+</script>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert_margin margin_flash alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert" id=<%= "dashboard_flash" if @flash_dashboard.present? %>>&#215;</a>
+	  <%= content_tag :div, msg.html_safe, :id => "flash_#{name}" %>
+	</div>
+  <% end %>
+  <% flash.discard(name) %>
+<% end %>

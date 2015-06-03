@@ -13,10 +13,37 @@
           <tr>
             <td> <%= make.name %> </td>
             <td> <%= make.published ? "Yes" : "No" %> </td>
-            <td> <%= link_to "Remove", admin_configurations_vehicle_make_path(make), method: :delete, data: {confirm: "Are you sure to delete this make?"}, class: "btn btn-danger" %> </td>
+            <td>
+              <%= link_to "Edit", edit_admin_configurations_vehicle_make_path(make), class: "btn btn-primary" %> 
+              <%= link_to "Remove", admin_configurations_vehicle_make_path(make), method: :delete, data: {confirm: "Are you sure to delete this make?"}, class: "btn btn-danger" %> </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Models Name</th>
+          <th>Make Name</th>
+          <th>Published</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicle_models.each do |vehicle_model| %>
+          <tr>
+            <td> <%= vehicle_model.name %> </td>
+            <td> <%= vehicle_model.vehicle_make.name %> </td>
+            <td> <%= vehicle_model.published ? "Yes" : "No" %> </td>
+            <td>
+              <%= link_to "Edit", edit_admin_configurations_vehicle_model_path(vehicle_model), class: "btn btn-primary" %>  
+              <%= link_to "Remove", admin_configurations_vehicle_model_path(vehicle_model), method: :delete, data: {confirm: "Are you sure to delete this Model?"}, class: "btn btn-danger" %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>  
 </div>
