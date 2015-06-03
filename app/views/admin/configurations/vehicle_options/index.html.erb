@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-10">
+  	<table class="table">
+  	  <thead>
+        <tr>
+          <th>Name</th>
+          <th>Published</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicle_options.each do |vehicle_option| %>
+          <tr>
+            <td> <%= vehicle_option.name %> </td>
+            <td> <%= vehicle_option.published ? "Yes" : "No" %> </td>
+            <td>
+              <%= link_to "Edit", edit_admin_configurations_vehicle_option_path(vehicle_option), class: "btn btn-primary" %> 
+              <%= link_to "Remove", admin_configurations_vehicle_option_path(vehicle_option), method: :delete, data: {confirm: "Are you sure to delete this Vehicle Option?"}, class: "btn btn-danger" %> 
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  	</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Create Vehicle Option </h2>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @vehicle_option, url: admin_configurations_vehicle_options_path, method: :post  do |f| %>
+          <%= f.label "Vehicle Option Name" %><br>
+          <%= f.text_field :name, placeholder: "Vehicle Option Name" %><br/></br>
+          <%= f.submit "Create Vehicle Option", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

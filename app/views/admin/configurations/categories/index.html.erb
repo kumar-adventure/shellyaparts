@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Preview</th>
+          <th>Category Name</th>
+          <th>Category Alias</th>
+          <th>Category Type</th>
+          <th>State</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= image_tag(category.avatar_url(:thumb)) %></td>
+            <td><%= category.name %></td>
+            <td><%= category.category_alias %></td>
+            <td><%= category.category_type.name %></td>
+            <td><%= category.published ? "Published" : "UnPublish" %></td>
+            <td>
+              <%= link_to "Edit", edit_admin_configurations_category_path(category), class: "btn btn-primary" %> 
+              <%= link_to "Remove", admin_configurations_category_path(category), method: :delete, data: {confirm: "Are you sure to delete this Category?"}, class: "btn btn-danger" %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+</div>
+<%= link_to "Create New Category", new_admin_configurations_category_path, class: "btn btn-primary" %>

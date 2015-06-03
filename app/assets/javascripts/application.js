@@ -16,3 +16,4 @@
 //= require ./login/bootstrap
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require tinymce

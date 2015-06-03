@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603120912) do
+ActiveRecord::Schema.define(version: 20150603190003) do
 
   create_table "addons", force: true do |t|
     t.string   "name"
@@ -44,6 +44,20 @@ ActiveRecord::Schema.define(version: 20150603120912) do
   add_index "admins", ["deleted_at"], name: "index_admins_on_deleted_at"
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "category_alias"
+    t.integer  "category_type_id"
+    t.boolean  "published",        default: false
+    t.string   "avatar"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+  end
+
+  add_index "categories", ["deleted_at"], name: "index_categories_on_deleted_at"
 
   create_table "category_types", force: true do |t|
     t.string   "name"
@@ -125,5 +139,15 @@ ActiveRecord::Schema.define(version: 20150603120912) do
 
   add_index "vehicle_models", ["deleted_at"], name: "index_vehicle_models_on_deleted_at"
   add_index "vehicle_models", ["vehicle_make_id"], name: "index_vehicle_models_on_vehicle_make_id"
+
+  create_table "vehicle_options", force: true do |t|
+    t.string   "name"
+    t.datetime "deleted_at"
+    t.boolean  "published",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vehicle_options", ["deleted_at"], name: "index_vehicle_options_on_deleted_at"
 
 end

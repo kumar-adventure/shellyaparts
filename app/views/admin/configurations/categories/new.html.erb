@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2>Create New Category</h2>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @category, url: admin_configurations_categories_path, method: :post do |f| %>
+          <%= f.label "Category Name" %><br/>
+          <%= f.text_field :name %><br/>
+          <%= f.label "Category Alias" %><br/>
+          <%= f.text_field :category_alias %><br/>
+          <%= f.label "Category Type" %><br/>
+          <%= f.select :category_type_id, options_for_select(@category_types.collect{|c| [c.name, c.id]}) %><br/>
+          <%= f.label "Category Image" %>
+          <%= f.file_field :avatar %><br/>
+          <%= f.label :published %>
+          <%= f.check_box :published %><br>
+          <%= f.label "Category Description" %>
+          <%= f.text_area :description, :class => "tinymce", :rows => 5, :cols => 8 %> <br/>
+          <%= tinymce %>          
+          <%= f.submit "Create Category", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

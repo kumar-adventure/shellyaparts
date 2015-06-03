@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :vehicle_makes
       resources :vehicle_models
       resources :category_types
+      resources :categories
+      resources :vehicle_options, except: [:show, :new]
     end
   end
 
