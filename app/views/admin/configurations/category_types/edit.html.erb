@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>
+      Update Category Type
+    </h2>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @category_type, url: admin_configurations_category_type_path, method: :put do |f| %>
+          <%= f.text_field :name %><br/>
+          <%= f.label :published %>
+          <%= f.check_box :published %><br>
+          <%= f.submit "Update Category Type", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

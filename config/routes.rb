@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :configurations do
       resources :vehicle_makes
       resources :vehicle_models
+      resources :category_types
     end
   end
 

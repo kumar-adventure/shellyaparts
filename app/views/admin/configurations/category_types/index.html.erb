@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-10">
+  	<table class="table">
+  	  <thead>
+        <tr>
+          <th>Name</th>
+          <th>Published</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @category_types.each do |type| %>
+          <tr>
+            <td> <%= type.name %> </td>
+            <td> <%= type.published ? "Yes" : "No" %> </td>
+            <td>
+              <%= link_to "Edit", edit_admin_configurations_category_type_path(type), class: "btn btn-primary" %> 
+              <%= link_to "Remove", admin_configurations_category_type_path(type), method: :delete, data: {confirm: "Are you sure to delete this Category Type?"}, class: "btn btn-danger" %> 
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  	</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Create Category Type </h2>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= form_for @category_type, url: admin_configurations_category_types_path, method: :post  do |f| %>
+          <%= f.label "Category Type Name" %><br>
+          <%= f.text_field :name, placeholder: "Category Type Name" %><br/></br>
+          <%= f.submit "Create Category Type", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
