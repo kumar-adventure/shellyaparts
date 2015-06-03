@@ -7,7 +7,7 @@
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
         <%= form_for @vehicle_make, url: admin_configurations_vehicle_makes_path, method: :post do |f| %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, placeholder: "Please type makes name" %>
           <%= f.submit "Create Makes", class: "btn btn-success" %>
         <% end %>
       </div>
@@ -22,7 +22,7 @@
       <div class="accordion-inner">
         <%= form_for @vehicle_model, url: admin_configurations_vehicle_models_path, method: :post do |f| %>
           <%= f.select :vehicle_make_id, options_for_select(@vehicle_makes.collect{|v| [v.name, v.id]}), {}, {class: "selectpicker"} %>
-          <%= f.text_field :name %>
+          <%= f.text_field :name, placeholder: "Please type model name" %>
           <%= f.submit "Create Models", class: "btn btn-success" %>
         <% end %>
       </div>
